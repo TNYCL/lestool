@@ -11,11 +11,12 @@ def opendialog():
     global filepath
     global pname
     global shortedname
-
-    check.download()
     
     pname = input('Project Name: ')
     shortedname = input('Shorted Name: ')
+
+    check.download()
+
     filepath = fd.askdirectory(title='Select Skin Pack')
     print("")
     main.message('Checking folders...')
