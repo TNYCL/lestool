@@ -37,15 +37,37 @@ def select_resolution():
 
 def res_64x64():
     for file in filepath:
-        skin = cv2.imread(file, cv2.IMREAD_COLOR)
+        try:
+            skin = cv2.imread(file, cv2.IMREAD_UNCHANGED)
 
-        name = os.path.basename(file)
-        if name.endswith(".png"): name = name.replace(".png", "")
-        else: name = name.replace(".jpg", "")
+            name = os.path.basename(file)
+            if name.endswith(".png"): name = name.replace(".png", "")
+            else: name = name.replace(".jpg", "")
 
-        skin[0:8, 0:8] = (0, 0, 0)
+            skin[0:8, 0:8, 3] = 0
+            skin[0:8, 0:8, 3] = 0
+            skin[0:8, 24:40, 3] = 0
+            skin[0:8, 56:64, 3] = 0
+            skin[16:20, 0:4, 3] = 0
+            skin[16:20, 12:20, 3] = 0
+            skin[16:20, 36:44, 3] = 0
+            skin[16:20, 50:64, 3] = 0
+            skin[20:48, 54:64, 3] = 0
+            skin[32:36, 50:54, 3] = 0
+            skin[48:52, 58:64, 3] = 0
+            skin[52:64, 62:64, 3] = 0
+            skin[32:36, 0:4, 3] = 0
+            skin[32:36, 12:20, 3] = 0
+            skin[32:36, 36:44, 3] = 0
+            skin[48:52, 0:4, 3] = 0
+            skin[48:52, 12:20, 3] = 0
+            skin[48:52, 28:36, 3] = 0
+            skin[48:52, 42:52, 3] = 0
+            skin[52:64, 46:48, 3] = 0
 
-        cv2.imwrite(file.replace(name, name + "_cleared"), skin)
+            cv2.imwrite(file.replace(name, name + "_cleared"), skin)
+        except Exception as ex:
+            print(ex)
 
 def res_128x128():
     for file in filepath:
