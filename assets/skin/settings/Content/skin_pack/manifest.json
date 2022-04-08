@@ -1,0 +1,23 @@
+{
+    "header": {
+        "name": "pack.CR",
+        "version": [
+            1,
+            0,
+            0
+        ],
+        "uuid": "%header%"
+    },
+    "modules": [
+        {
+            "version": [
+                1,
+                0,
+                0
+            ],
+            "type": "skin_pack",
+            "uuid": "%modules%"
+        }
+    ],
+    "format_version": 1
+}
