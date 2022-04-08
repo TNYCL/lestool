@@ -205,5 +205,5 @@ def run():
         return
     
     input("\n\n  Press enter to return main menu.")
-    main.clear_console()
+    main.message("Returned to main menu \n", True)
     main.main()
