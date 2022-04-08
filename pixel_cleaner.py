@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog as fd
 from colorama import Fore, Back, Style
-import shutil
 import os
 import main
 import cv2
@@ -16,7 +15,7 @@ def select_file():
     if filepath != '':
         main.message(f'Files selected: Path => {filepath}')
     else:
-        main.error('File not selected.', False)
+        main.error('File not selected.', True)
 
 def select_resolution():
     print(Fore.LIGHTBLACK_EX + "  0. Back to main")
@@ -36,16 +35,61 @@ def select_resolution():
         main.error("Wrong Option.\n")
         select_resolution()
 
+def click_event(event, x, y, flags, params):
+ 
+    # checking for left mouse clicks
+    if event == cv2.EVENT_LBUTTONDOWN:
+ 
+        # displaying the coordinates
+        # on the Shell
+        print(x, ' ', y)
+ 
+        # displaying the coordinates
+        # on the image window
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        cv2.putText(img, str(x) + ',' +
+                    str(y), (x,y), font,
+                    1, (255, 0, 0), 2)
+        cv2.imshow('image', img)
+ 
+    # checking for right mouse clicks    
+    if event==cv2.EVENT_RBUTTONDOWN:
+ 
+        # displaying the coordinates
+        # on the Shell
+        print(x, ' ', y)
+ 
+        # displaying the coordinates
+        # on the image window
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        b = img[y, x, 0]
+        g = img[y, x, 1]
+        r = img[y, x, 2]
+        cv2.putText(img, str(b) + ',' +
+                    str(g) + ',' + str(r),
+                    (x,y), font, 1,
+                    (255, 255, 0), 2)
+        cv2.imshow('image', img)
+
+def test():
+    for file in filepath:
+        global img
+        img = cv2.imread(file, 1)
+
+        cv2.imshow('image', img)
+        cv2.setMouseCallback('image', click_event)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+
 def res_64x64():
     for file in filepath:
         skin = cv2.imread(file, cv2.IMREAD_COLOR)
 
-        skin[0:8, 0:8] = (255, 0, 0)
+        skin[0:8, 15:25] = [0, 0, 0]
 
-        #cv2.imwrite(filepath, skin)
-        print(str(os.path.basename(file)))
+        cv2.imwrite(file, skin)
 
-def res_128x128(): 
+def res_128x128():
     for file in filepath:
         skin = cv2.imread(file, cv2.IMREAD_COLOR)
 
@@ -62,10 +106,9 @@ def run():
     except:
         input("\n\n  Press enter to continue.")
         main.clear_console()
-        main.message("Returned to main menu \n")
+        main.message("Returned to main menu. \n")
         main.main()
         return
 
-    input("\n\n  Press enter to return main menu")
-    main.message("Returned to main menu \n", True)
-    main.main()
+    input("\n\n  Press enter to return main menu.")
+    main.return_main()

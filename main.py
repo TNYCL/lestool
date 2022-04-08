@@ -68,6 +68,10 @@ def main():
         error("Wrong Option.\n")
         main()
 
+def return_main():
+    message("Returned to main menu. \n", True)
+    main()
+
 def get_hwid():
     if platform.system() == "Windows": return str(subprocess.check_output('wmic csproduct get uuid'), 'utf-8').split('\n')[1].strip()
     else: 

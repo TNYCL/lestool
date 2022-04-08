@@ -179,7 +179,7 @@ def select_file():
             main.message('Folder selected: Path => {path}'.format(path=str(filepath)))
             check_folders()
         else:
-            main.error('File not selected.', True)
+            main.error('Folder not selected.', True)
 
 def run():
     main.message("Map Packager\n")
@@ -191,19 +191,41 @@ def run():
 
     try:
         project_name = input('  Normal Name'+Fore.RESET+': ')
-        shorted_project_name = input('  Shorted Name'+Fore.RESET+': ')
-        project_description = input('  Description'+Fore.RESET+': ')
-        project_author = input('  Author'+Fore.RESET+': ')
-        project_name.replace(" ", "")
+        if len(project_name) == 0:
+            main.error("Normal name cannot be left blank.")
+            input("\n\n  Press enter to return main menu.")
+            main.return_main()
+            return
 
+        shorted_project_name = input('  Shorted Name'+Fore.RESET+': ')
+        if len(shorted_project_name) == 0:
+            main.error("Shorted name cannot be left blank.")
+            input("\n\n  Press enter to return main menu.")
+            main.return_main()
+            return
+
+        project_description = input('  Description'+Fore.RESET+': ')
+        if len(project_description) == 0:
+            main.error("Description cannot be left blank.")
+            input("\n\n  Press enter to return main menu.")
+            main.return_main()
+            return
+
+        project_author = input('  Author'+Fore.RESET+': ')
+        if len(project_author) == 0:
+            main.error("Author cannot be left blank.")
+            input("\n\n  Press enter to return main menu.")
+            main.return_main()
+            return
+
+        project_name.replace(" ", "")
         select_file()
     except:
         input("\n\n  Press enter to continue.")
         main.clear_console()
-        main.message("Returned to main menu \n")
+        main.message("Returned to main menu. \n")
         main.main()
         return
     
     input("\n\n  Press enter to return main menu.")
-    main.message("Returned to main menu \n", True)
-    main.main()
+    main.return_main()

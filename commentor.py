@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import filedialog as fd
 from colorama import Fore, Back, Style
 import shutil
-import os
 import main
 
 root = tk.Tk()
@@ -19,7 +18,7 @@ def select_file():
         main.message(f'Folder selected: Path => {str(filepath)}')
         build_project()
     else:
-        main.error('Folder not selected.', clear=False)
+        main.error('Folder not selected.', True)
 
 
 def build_project():
@@ -33,10 +32,9 @@ def run():
     except:
         input("\n\n  Press enter to continue.")
         main.clear_console()
-        main.message("Returned to main menu \n")
+        main.message("Returned to main menu. \n")
         main.main()
         return
 
     input("\n\n  Press enter to return main menu.")
-    main.message("Returned to main menu \n", True)
-    main.main()
+    main.return_main()

@@ -9,8 +9,7 @@ def select_content_type():
     print(Fore.CYAN + "  2. Map Packager")
     operation = input(Fore.RESET + "\n  Select an option: ")
     if(operation == "0"):
-        main.message("Returned to main menu \n", True)
-        main.main()
+        main.return_main()
     elif operation == "1":
         main.clear_console()
         skin_packer.run()
