@@ -38,7 +38,7 @@ def download_assets(extract_to='./assets/map/settings'):
     template_exist = os.path.exists(os.path.join(get_assets_folder(), "template"))
 
     if settings_exist == False:
-        main.warning('World: settings folder not exists, downloading.')
+        main.warn('Settings not exists, downloading.')
         try:
             context = ssl._create_unverified_context()
             http_response = urlopen(settings_url, context=context)
@@ -51,7 +51,7 @@ def download_assets(extract_to='./assets/map/settings'):
             main.error('There was a problem downloading the template folder.', True)
             return debug_traceback()
     if template_exist == False:
-        main.warning('World: template folder not exists, downloading.')
+        main.warn('Template not exists, downloading.', True)
         try:
             context = ssl._create_unverified_context()
             http_response = urlopen(template_url, context=context)
@@ -172,7 +172,7 @@ def build_project():
 
 def select_file():
     if(download_assets()):
-        main.message('Select folder needs to be packaged. \n')
+        main.message('Select folder needs to be packaged. \n', True)
         global filepath
         filepath = fd.askdirectory(title='Select Folder')
         if filepath != '':

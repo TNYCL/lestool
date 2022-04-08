@@ -25,10 +25,12 @@ validate_url = "https://api.tnycl.com/lespacker/validate.php"
 def success(message):
     print(f"{Fore.BLACK + Back.GREEN}SUCCESS:" + Style.RESET_ALL + " " + message + Fore.RESET)
 
-def warning(message):
+def warning(message, clear=False):
+    if clear: clear_console()
     print(f"{Fore.YELLOW}WARNING:" + Style.RESET_ALL + " " + message + Fore.RESET)
 
-def warn(message):
+def warn(message, clear=False):
+    if clear: clear_console()
     print(f"{Fore.YELLOW}+:" + Style.RESET_ALL + " " + message + Fore.RESET)
 
 def err(message):

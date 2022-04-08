@@ -13,7 +13,7 @@ template_exist = path.exists(os.getcwd() + "/assets/skin/template")
 
 def download(extract_to='./assets/skin/settings'):
     if settings_exist == False:
-        main.message('Settings folder not exists, downloading.')
+        main.warn('Settings folder not exists, downloading.', True)
         try:
             context = ssl._create_unverified_context()
             http_response = urlopen(settings_url, context=context)
@@ -24,7 +24,7 @@ def download(extract_to='./assets/skin/settings'):
         except Exception:
             main.error('There was a problem downloading the template.zip')
     if template_exist == False:
-        main.message('Template folder not exists, downloading.')
+        main.warn('Template folder not exists, downloading.', True)
         try:
             context = ssl._create_unverified_context()
             http_response = urlopen(template_url, context=context)

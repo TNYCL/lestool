@@ -19,7 +19,7 @@ def opendialog():
 
     filepath = fd.askdirectory(title='Select Skin Pack')
     print("")
-    main.message('Checking folders...')
+    main.message('Checking folders...', True)
 
     from ..util import file
     file.checkall()
