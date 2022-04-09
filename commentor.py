@@ -11,7 +11,7 @@ VERSION = "0.1"
 DEBUG = True
 
 def select_file():
-    main.message('Select folder needs to be commented.\n')
+    main.message('Select folder needs to be commented.', True)
     global filepath
     filepath = fd.askdirectory(title='Select Folder')
     if filepath != '':

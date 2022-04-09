@@ -2,7 +2,6 @@ from colorama import Fore, Back, Style
 import subprocess
 import os
 import json
-import sys
 import platform
 import requests
 import calendar
@@ -18,6 +17,7 @@ VERSION = "1.0.0"
 DEBUG = True
 SECURITY_HASH = "C7E876AD26C4BBF271A22CF89E94D3D2A01B4C31CE91E08E894CFCA83C1F4D5DE35512F7202A8AA16EBF0FB8D6B360B55AC23C3A67D9B0516C8AA18047BC990D"
 TOKEN_VALIDATED = False
+USER_DATA = {}
 
 settings_path = "settings.json"
 validate_url = "https://api.tnycl.com/lespacker/validate.php"
@@ -93,7 +93,7 @@ def clear_console():
     if os.name in ('nt', 'dos'):
         command = 'cls'
     os.system(command)
-    print()
+    print("")
 
 def validate_token(token):
     sent = {"token": token, "security_hash": SECURITY_HASH, "hwid": get_hwid(), "timestamp": calendar.timegm(time.gmtime())}
@@ -114,6 +114,9 @@ def validate_token(token):
     if TOKEN_VALIDATED: 
         save_token(token)
         message(incoming['message'] + "\n")
+
+        global USER_DATA
+        USER_DATA = incoming['data']
     else:
         error(incoming['message'], True)
         input("\n Press enter to exit.")
@@ -135,4 +138,5 @@ if __name__ == "__main__":
     else:
         validate_token(get_token())
 
-    if TOKEN_VALIDATED: main()
+    if TOKEN_VALIDATED:
+        main()
