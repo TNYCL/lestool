@@ -23,8 +23,12 @@ def get_version():
 def check_update():
     get_version()
     if VERSION == main.VERSION: return
-    
-    main.warn(f"New update founded v{VERSION}")
+    else:
+        if os.path.exists(os.getcwd() + f"/tool.v{VERSION}.exe"):
+            main.error(f"You have already downloaded the new version, please open this file: tool.v{VERSION}.exe")
+            return True
+
+    main.warn(f"New update founded, v{VERSION}\n")
     download_update()
     return True
 

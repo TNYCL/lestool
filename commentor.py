@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter import filedialog as fd
-from colorama import Fore, Back, Style
 import shutil
 import main
 
