@@ -185,26 +185,27 @@ def build_project():
     
     photo_count = 0
     marketingart_path = project_path + "Marketing Art/"
+    no_space_pname = project_name.replace(" ", "")
     for file in os.listdir(filepath + '/arts/ingame'):
         if file == "packicon.jpg": continue
         if file == "panorama.jpg": continue
-        shutil.copy(filepath + "/arts/ingame/" + file, marketingart_path + project_name + "_MarketingScreenshot_" + str(photo_count) + ".jpg")
+        shutil.copy(filepath + "/arts/ingame/" + file, marketingart_path + no_space_pname + "_MarketingScreenshot_" + str(photo_count) + ".jpg")
         photo_count+=1
-    shutil.copy(filepath + "/arts/keyart.png", marketingart_path + project_name + "_MarketingKeyArt.png")
-    shutil.copy(filepath + "/arts/partnerart.png", marketingart_path + project_name + "_MarketingPartnerArt.png")
+    shutil.copy(filepath + "/arts/keyart.png", marketingart_path + no_space_pname + "_MarketingKeyArt.png")
+    shutil.copy(filepath + "/arts/partnerart.png", marketingart_path + no_space_pname + "_MarketingPartnerArt.png")
 
     photo_count = 0
     storeart_path = project_path + "Store Art/"
     for file in os.listdir(filepath + '/arts/ingame'):
         if file == "packicon.jpg":
-            shutil.copy(filepath + "/arts/ingame/" + file, storeart_path + project_name + "_packicon_0.jpg")
+            shutil.copy(filepath + "/arts/ingame/" + file, storeart_path + no_space_pname + "_packicon_0.jpg")
             continue
         if file == "panorama.jpg":
-            shutil.copy(filepath + "/arts/ingame/" + file, storeart_path + project_name + "_panorama_0.jpg")
+            shutil.copy(filepath + "/arts/ingame/" + file, storeart_path + no_space_pname + "_panorama_0.jpg")
             continue
-        shutil.copy(filepath + "/arts/ingame/" + file, storeart_path + project_name + "_MarketingScreenshot_" + str(photo_count) + ".jpg")
+        shutil.copy(filepath + "/arts/ingame/" + file, storeart_path + no_space_pname + "_MarketingScreenshot_" + str(photo_count) + ".jpg")
         photo_count+=1
-    shutil.copy(filepath + "/arts/thumbnail.jpg", storeart_path + project_name + "_Thumbnail_0.jpg")
+    shutil.copy(filepath + "/arts/thumbnail.jpg", storeart_path + no_space_pname + "_Thumbnail_0.jpg")
     print("\n")
     main.success(f'{project_name} project has been successfully packaged, path: projects/map/{project_name}')
 
