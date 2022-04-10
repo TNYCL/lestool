@@ -18,7 +18,7 @@ import main
 root = tk.Tk()
 root.withdraw()
 
-VERSION = "0.1"
+#sil
 DEBUG = True
 
 def debug_traceback():

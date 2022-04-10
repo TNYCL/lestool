@@ -6,14 +6,13 @@ import platform
 import requests
 import calendar
 import time
-import commentor
+import sys
 import pixel_cleaner
 import update
 import content_packager
 
-
 NAME = "LES:Tool"
-VERSION = "1.0.0"
+VERSION = "1.0.1"
 DEBUG = True
 SECURITY_HASH = "C7E876AD26C4BBF271A22CF89E94D3D2A01B4C31CE91E08E894CFCA83C1F4D5DE35512F7202A8AA16EBF0FB8D6B360B55AC23C3A67D9B0516C8AA18047BC990D"
 TOKEN_VALIDATED = False
@@ -22,7 +21,8 @@ USER_DATA = {}
 settings_path = "settings.json"
 validate_url = "https://api.tnycl.com/lespacker/validate.php"
 
-def success(message):
+def success(message, clear=False):
+    if clear: clear_console()
     print(f"{Fore.BLACK + Back.GREEN}SUCCESS:" + Style.RESET_ALL + " " + message + Fore.RESET)
 
 def warning(message, clear=False):
@@ -48,22 +48,21 @@ def message(message, clear=False):
 def main():
     print(Fore.LIGHTBLACK_EX + "  0. Exit")
     print(Fore.CYAN + "  1. Content Packager")
-    print(Fore.CYAN + "  2. Addon Commentor")
-    print(Fore.CYAN + "  3. Pixel Cleaner")
+    print(Fore.CYAN + "  2. Pixel Cleaner")
+    print(Fore.CYAN + "  3. Addon Commentor")
     operation = input(Fore.RESET + "\n  Select an option: ")
 
     if(operation == "0"):
-        message("Good bye", True)
-        input("\n Press enter to exit.")
+        exit_program()
     elif operation == "1":
         clear_console()
         content_packager.run()
     elif operation == "2":
         clear_console()
-        commentor.run()
-    elif operation == "3":
-        clear_console()
         pixel_cleaner.run()
+    elif operation == "3":
+        error("Currently under maintenance.\n")
+        main()
     else:
         error("Wrong Option.\n")
         main()
@@ -94,6 +93,12 @@ def clear_console():
         command = 'cls'
     os.system(command)
     print("")
+
+def exit_program(clear=True):
+    print("")
+    message("Good bye", clear)
+    input("\n Press enter to exit.")
+    sys.exit(0)
 
 def validate_token(token):
     sent = {"token": token, "security_hash": SECURITY_HASH, "hwid": get_hwid(), "timestamp": calendar.timegm(time.gmtime())}
@@ -130,10 +135,11 @@ if __name__ == "__main__":
         message(f"(Dev) {NAME} Version: {VERSION}")
         message(f"Secure Hash: {SECURITY_HASH}\n")
 
-    update.check_update()
+    if update.check_update(): exit_program(False)
 
     if get_token() == None:
-        token = input("\nEnter your token: ")
+        token = input("\n  Enter your token: ")
+        clear_console()
         validate_token(token)
     else:
         validate_token(get_token())
