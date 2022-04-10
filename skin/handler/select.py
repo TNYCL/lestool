@@ -8,30 +8,30 @@ root = tk.Tk()
 root.withdraw()
 
 def opendialog():
-    check.download()
-
     global filepath
     global pname
     global shortedname
-    pname = input('Normal Name: ')
+    pname = input('  Normal Name: ')
     if len(pname) == 0:
         main.error("Normal name cannot be left blank.", True)
         input("\n\n  Press enter to return main menu.")
         main.return_main()
         return
 
-    shortedname = input('Shorted Name: ')
+    shortedname = input('  Shorted Name: ')
     if len(shortedname) == 0:
         main.error("Shorted name cannot be left blank.", True)
         input("\n\n  Press enter to return main menu.")
         main.return_main()
         return
 
+    check.download()
+
     main.message('Select folder needs to be packaged. \n', True)
     filepath = fd.askdirectory(title='Select Folder')
 
     if filepath != '':
-        main.message('Folder selected: Path => {path}'.format(path=str(filepath)))
+        main.message(f'Folder selected: {str(filepath)}', True)
         from ..util import file
         file.checkall()
     else:

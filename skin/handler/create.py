@@ -13,7 +13,7 @@ src = 'assets/skin/settings'
 
 class Create:
     def __init__(self):
-        self.path = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop') + '/' + pname + '/'
+        self.path = os.getcwd() + '/projects/skin/' + pname + '/'
 
     def copyfile(self):
         try:
@@ -67,7 +67,7 @@ def text_pname():
             data.write('skinpack.'+shortedname+'={}\n'.format(pname))
             data.close()
     except:
-        main.error("texts/en_US.lang(Project Name) files couldn't be processed.")
+        main.error("texts/en_US.lang(Project Name) couldn't be processed.")
 
 def text_skin(name):
     try:
@@ -77,7 +77,7 @@ def text_skin(name):
             data.write('skin.'+shortedname+'.{}={}\n'.format(name, name))
             data.close()
     except:
-        main.error("texts/en_US.lang(Skin) files couldn't be processed.")
+        main.error("texts/en_US.lang(Skin) couldn't be processed.")
 
 def jsonparse_skin(name, geometry, texture, type):
     try:

@@ -36,7 +36,7 @@ def checkall():
         if not Path(directory.format(file)).is_file():
             main.error(f"Folder {folder} is marked as required, but does not exist.", True)
             return
-    
+
     main.message('Files are verified, progressing.\n', True)
     global createdfile
     global skinfolder
@@ -47,9 +47,9 @@ def checkall():
     skinfolder = createdfile.path  + 'Content/skin_pack'
     steve = Steve()
     slim = Slim()
-    main.message('{} skin included. \n\n'.format(getskincount()))
+    main.message(f'{getskincount()} skin included. \n\n')
     create.createproject()
-    main.success('{} project has been successfully packaged.'.format(select.pname))
+    main.success(f'{select.pname} project has been successfully packaged, path: projects/skin/{select.pname}')
 
 def getskincount(): return len(steve.output) + len(slim.output)
 

@@ -1,11 +1,11 @@
-from skin.handler import select
+from scratcher.handler import input as inp
 import main
 
 def run():
-    main.message("Skin Packager\n")
+    main.message("Add-on Project Creator\n")
 
     try:
-        select.opendialog()
+        inp.runtask()
     except:
         input("\n\n  Press enter to continue.")
         main.clear_console()

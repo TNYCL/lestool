@@ -5,16 +5,18 @@ import json
 import platform
 import requests
 import calendar
+import project_creator
 import time
 import sys
 import pixel_cleaner
 import update
 import content_packager
 
-NAME = "LES:Tool"
-VERSION = "1.0.1"
-DEBUG = True
+NAME = "Les:Tool"
+VERSION = "1.0.0"
+DEBUG = False
 SECURITY_HASH = "C7E876AD26C4BBF271A22CF89E94D3D2A01B4C31CE91E08E894CFCA83C1F4D5DE35512F7202A8AA16EBF0FB8D6B360B55AC23C3A67D9B0516C8AA18047BC990D"
+
 TOKEN_VALIDATED = False
 USER_DATA = {}
 
@@ -49,7 +51,8 @@ def main():
     print(Fore.LIGHTBLACK_EX + "  0. Exit")
     print(Fore.CYAN + "  1. Content Packager")
     print(Fore.CYAN + "  2. Pixel Cleaner")
-    print(Fore.CYAN + "  3. Addon Commentor")
+    print(Fore.CYAN + "  3. Add-on Project Creator")
+    print(Fore.CYAN + "  4. Add-on Commentor")
     operation = input(Fore.RESET + "\n  Select an option: ")
 
     if(operation == "0"):
@@ -61,6 +64,9 @@ def main():
         clear_console()
         pixel_cleaner.run()
     elif operation == "3":
+        clear_console()
+        project_creator.run()
+    elif operation == "4":
         error("Currently under maintenance.\n")
         main()
     else:

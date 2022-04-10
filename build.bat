@@ -1,1 +1,1 @@
-pyinstaller --onefile main.py
+pyinstaller --noconfirm --onefile --console --icon D:\Projeler\Python\lestool\icon.ico --name tool.v1.0.0 --clean D:/Projeler/Python/lestool/main.py --distpath D:\Projeler\Python\lestool\build --workpath C:\Users\TNYCL\AppData\Local\Temp\tmpkj6nozet\build --specpath C:\Users\TNYCL\AppData\Local\Temp\tmpkj6nozet

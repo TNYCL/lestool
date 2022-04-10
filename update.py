@@ -40,7 +40,7 @@ def download_update(extract_to='./'):
         main.message(f'v{VERSION} files extracting.')
 
         main.clear_console()
-        main.success(f'{main.NAME} successfully updated to v{VERSION}, open new file: "tool.v{VERSION}.exe".', True)
+        main.success(f'{main.NAME} successfully updated to v{VERSION}, open updated file: "tool.v{VERSION}.exe".', True)
         main.exit_program(False)
     except Exception:
         main.error('There was a problem downloading process.', True)
