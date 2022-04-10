@@ -1,5 +1,0 @@
-
-
-item.spawn_egg.entity.%template%.name=template entity spawn_egg name
-entity.%template%.name=template entity name
-action.hint.exit.%template%=Tip: §7Press LShift or Space to get off
