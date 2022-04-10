@@ -14,18 +14,8 @@ import json
 import uuid
 import main
 
-# Project settings
 root = tk.Tk()
 root.withdraw()
-
-#sil
-DEBUG = True
-
-def debug_traceback():
-    if(DEBUG):
-        track = traceback.format_exc()
-        print(track)
-        sys.exit(1)
 
 def get_assets_folder():
     return os.path.join(os.getcwd(), "assets/map")
@@ -49,7 +39,6 @@ def download_assets(extract_to='./assets/map/settings'):
             main.message('Settings folder successfully created.')
         except Exception:
             main.error('There was a problem downloading the template folder.', True)
-            return debug_traceback()
     if template_exist == False:
         main.warn('Template not exists, downloading.', True)
         try:
@@ -62,7 +51,6 @@ def download_assets(extract_to='./assets/map/settings'):
             main.message('Template folder successfully created.')
         except Exception:
             main.error('There was a problem downloading the settings folder.', True)
-            return debug_traceback()
     return True
 
 def check_folders():

@@ -13,19 +13,19 @@ def checkall():
     global directory
     directory = select.filepath + '/{}'
     REQUIRED_FOLDERS = [
-        "/skins",
-        "/skins/slim",
-        "/skins/slim/free",
-        "/skins/slim/paid",
-        "/skins/steve",
-        "/skins/steve/free",
-        "/skins/steve/paid",
-        "/arts"
+        "/Skins",
+        "/Skins/Slim",
+        "/Skins/Slim/Free",
+        "/Skins/Slim/Paid",
+        "/Skins/Steve",
+        "/Skins/Steve/Free",
+        "/Skins/Steve/Paid",
+        "/Arts"
     ]
     REQUIRED_FILES = [
-        "/arts/keyart.png",
-        "/arts/partnerart.png",
-        "/arts/thumbnail.jpg"
+        "/Arts/keyart.png",
+        "/Arts/partnerart.png",
+        "/Arts/thumbnail.jpg"
     ]
 
     for folder in REQUIRED_FOLDERS:
@@ -37,7 +37,7 @@ def checkall():
             main.error(f"Folder {folder} is marked as required, but does not exist.", True)
             return
     
-    main.message('Files are verified, progressing.')
+    main.message('Files are verified, progressing.\n', True)
     global createdfile
     global skinfolder
     global steve
@@ -47,7 +47,7 @@ def checkall():
     skinfolder = createdfile.path  + 'Content/skin_pack'
     steve = Steve()
     slim = Slim()
-    main.message('{} skin included.'.format(getskincount()))
+    main.message('{} skin included. \n\n'.format(getskincount()))
     create.createproject()
     main.success('{} project has been successfully packaged.'.format(select.pname))
 
@@ -65,6 +65,7 @@ class Slim:
             create.text_skin(realname)
             create.jsonparse_skin(realname, 'geometry.humanoid.customSlim', realname + '_customSlim.png', 'free')
             main.message('Including (Slim -> Free): {}'.format(realname))
+        
         for name in os.listdir(paid):
             realname = name.replace('.png', '')
             names.append(realname)
@@ -87,6 +88,7 @@ class Steve:
             create.text_skin(realname)
             create.jsonparse_skin(realname, 'geometry.humanoid.custom', realname + '_custom.png', 'free')
             main.message('Including (Steve -> Free): {}'.format(realname))
+        
         for name in os.listdir(paid):
             realname = name.replace('.png', '')
             names.append(realname)

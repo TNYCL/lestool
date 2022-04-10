@@ -9,7 +9,7 @@ import main
 
 pname = select.pname
 shortedname = select.shortedname
-src = 'settings'
+src = 'assets/skin/settings'
 
 class Create:
     def __init__(self):
@@ -20,8 +20,7 @@ class Create:
             shutil.copytree(src, self.path)
         except FileExistsError:
             file.openfolder(self.path)
-            #msg.error('This project already created.')
-            print(self.path)
+            main.error('This project is already packaged.', True)
 
 selectedpath = select.filepath
 createdpath = Create().path
