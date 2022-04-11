@@ -18,7 +18,7 @@ def duplicatefolder(project_name, author="TNYCL"):
     global dest
     pname = project_name
     pauthor = author
-    src = os.getcwd() + "/assets/scratcher/template"
+    src = os.getcwd() + "/assets/project_creator/template"
     dest = os.getcwd() + '/projects/project_creator/' + pname + "/"
     behavior = dest + pname + " BP/"
     resource = dest + pname + " RP/"

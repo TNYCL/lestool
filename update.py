@@ -6,6 +6,7 @@ import main
 import ssl
 import json
 import os
+import wget
 
 VERSION = ""
 LAST_UPDATE = ""
@@ -28,7 +29,7 @@ def check_update():
             main.error(f"You have already downloaded the new version, please open this file: tool.v{VERSION}.exe")
             return True
 
-    main.warn(f"New update founded, v{VERSION}\n")
+    main.warn(f"New version released, v{VERSION}\n")
     download_update()
     return True
 

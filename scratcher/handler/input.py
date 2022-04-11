@@ -9,7 +9,7 @@ def runtask():
     check.download()
     try:
         output.duplicatefolder(project_name, author)
-        main.success(f'{project_name} add-on project successfully created, path: projects/scratcher/{project_name}', True)
+        main.success(f'{project_name} add-on project successfully created, path: projects/project_creator/{project_name}', True)
     except:
         main.error("Unknown error.")
         return

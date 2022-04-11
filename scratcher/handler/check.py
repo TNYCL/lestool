@@ -6,10 +6,10 @@ from urllib.request import urlopen
 from zipfile import ZipFile
 import main
 
-zip_url = "https://cdn.tnycl.com/scratcher/template.zip"
-template_exist = path.exists(os.getcwd() + "/assets/scratcher/template")
+zip_url = "https://cdn.tnycl.com/project_creator/template.zip"
+template_exist = path.exists(os.getcwd() + "/assets/project_creator/template")
 
-def download(extract_to='./assets/scratcher/template'):
+def download(extract_to='./assets/project_creator/template'):
     if template_exist == False:
         main.warn('Template folder not exist, downloading.')
         try:
